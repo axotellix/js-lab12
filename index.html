@@ -2,10 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Лабораторная 12</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src = "app.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "styles/styles.css">
 </head>
 <body>
-    
+ <div id = 'app'>
+
+    <!-- [ DESCRIPTION ] -->
+    <h1>Список студентов</h1>
+    <p class = 'descr'>
+        Заполните поля "Имя" и "Фамилия", а затем нажмите на кнопку "записать", чтобы сделать новую запись и отобразить студента в списке.
+    </p>
+
+    <!-- [ FORM ] -->
+    <h2>Форма</h2>
+    <form action="">
+
+        <label for="surname">Фамилия</label>
+        <input type="text" name = 'surname' v-model = 'surname' @input = 'setCounter()' autocomplete = "off">
+
+        <label for="surname">Имя</label>
+        <input type="text" name = 'name' v-model = 'name' @input = 'setCounter()' autocomplete = "off">
+
+    </form>
+    <p id = 'signs'>Кол-во знаков: <span>{{ counter }}</span></p>
+    <input :disabled = 'name.length == 0 || surname.length == 0' type = 'button' value = 'Записать' @click = 'addNote()'>
+
+    <!-- [ STUDENTS LIST ] -->
+    <div class="list-container">
+        <h2>Список студентов:</h2>
+        <ul class="std-list">
+            <li v-if = 'std.length == 0' id = 'empty-list'>Список пуст</li>
+            <li v-for = 'note in std'>{{ note }}</li>
+        </ul>
+    </div>
+
+ </div>
 </body>
 </html>
