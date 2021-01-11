@@ -29,7 +29,7 @@
 
     </form>
     <p id = 'signs'>Кол-во знаков: <span>{{ counter }}</span></p>
-    <input :disabled = 'name.length == 0 || surname.length == 0' type = 'button' value = 'Записать' @click = 'addNote()'>
+    <input :disabled = 'name.trim() === "" || surname.trim() === ""' type = 'button' value = 'Записать' @click = 'addNote()'>
 
     <!-- [ STUDENTS LIST ] -->
     <div class="list-container">
@@ -43,3 +43,4 @@
  </div>
 </body>
 </html>
+
